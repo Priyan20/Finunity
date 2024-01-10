@@ -1,0 +1,48 @@
+HTML:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice-Guided Financial Navigator</title>
+</head>
+<body>
+    <h1>Voice-Guided Financial Navigator</h1>
+    
+    <button onclick="startListening()">Start Listening</button>
+    <p id="voiceOutput"></p>
+
+    <script>
+        // Code to handle voice commands and interactions
+        const voiceOutput = document.getElementById('voiceOutput');
+
+        function startListening() {
+            const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+            
+            recognition.onstart = function() {
+                voiceOutput.innerText = 'Listening...';
+            };
+            
+            recognition.onresult = function(event) {
+                const command = event.results[0][0].transcript;
+                voiceOutput.innerText = 'Command: ' + command;
+
+                // Implement logic to interpret and execute financial commands
+                handleFinancialCommand(command);
+            };
+
+            recognition.start();
+        }
+
+        function handleFinancialCommand(command) {
+            // Implement logic to interpret and execute financial commands
+            // This is where you would connect to your financial services or blockchain hub
+            // Example: Execute transactions, check balance, etc.
+            console.log('Executing financial command:', command);
+        }
+    </script>
+</body>
+</html>
+
+
